@@ -1,5 +1,9 @@
 # Deep Just-In-Time Inconsistency Detection Between Comments and Source Code
 
+
+
+
+
 **Code and datasets for our AAAI-2021 paper "Deep Just-In-Time Inconsistency Detection Between Comments and Source Code"**
 which can be found [here](https://arxiv.org/pdf/2010.01625.pdf).
 
@@ -17,6 +21,38 @@ If you find this work useful, please consider citing our paper:
 The code base shares components with our prior work called [Learning to Update Natural Language Comments Based on Code Changes](https://github.com/panthap2/LearningToUpdateNLComments).
 
 Download data from [here](https://drive.google.com/drive/folders/1heqEQGZHgO6gZzCjuQD1EyYertN4SAYZ?usp=sharing). Download additional model resources from [here](https://drive.google.com/drive/folders/1cutxr4rMDkT1g2BbmCAR2wqKTxeFH11K?usp=sharing). Edit configurations in `constants.py` to specify data, resource, and output locations.
+
+
+## Steps to recreate doctesting results
+
+### Repo setup
+
+as mentioned above, data needs to be downloaded from google drive, and configurations in `constants.py` need to be updated to point to these resources
+
+Several resources from nltk are required:
+- `corpora/stopwords`
+- `taggers/averaged_perceptrion_tagger`
+- `tokenizers/punkt`
+
+### Dataset formatting
+`format_dataset.py` is used to format the dataset to be passed to the graph model. `JAR_PATH` and `VIEW_DATA` path need to be updated,
+then you can run the file with no additional arguments.
+
+### Model training:
+
+The trained model is already included in the repo (`detect_attend_code_graph_states_features.pkl.gz`),
+but to repeat training of *GRAPH(C, T<sub>edit</sub>) + features*:
+```
+python3 run_comment_model.py --task=detect --attend_code_graph_states --posthoc --model_path=detect_attend_code_graph_states_features.pkl.gz --model_name=detect_attend_code_graph_states_features
+```
+>30gb of ram is required to load training data
+
+### Inference
+```
+python3 run_comment_model.py --task=detect --attend_code_graph_states --posthoc --model_path=detect_attend_code_graph_states_features.pkl.gz --model_name=detect_attend_code_graph_states_features --test_mode --rerank
+```
+Outputs will be output to `out/deep_jit_posthoc.csv`.
+
 
 **Inconsistency Detection:**
 

@@ -1,7 +1,7 @@
 import os
 
-START = '<sos>'
-END = '<eos>'
+START = "<sos>"
+END = "<eos>"
 NL_EMBEDDING_SIZE = 64
 CODE_EMBEDDING_SIZE = 64
 HIDDEN_SIZE = 64
@@ -36,16 +36,19 @@ NUM_TRANSFORMER_LAYERS = 2
 
 # Download data from here: https://drive.google.com/drive/folders/1heqEQGZHgO6gZzCjuQD1EyYertN4SAYZ?usp=sharing
 # DATA_PATH should point to the location in which the above data is saved locally
-DATA_PATH = '[PATH TO DOWNLOADED DATA]' # TODO
-RESOURCES_PATH = os.path.join(DATA_PATH, 'resources')
+DATA_PATH = "[PATH TO DOWNLOADED DATA]"  # TODO
+RESOURCES_PATH = os.path.join(DATA_PATH, "resources")
 
 # Download model resources from here: https://drive.google.com/drive/folders/1cutxr4rMDkT1g2BbmCAR2wqKTxeFH11K?usp=sharing
 # MODEL_RESOURCES_PATH should point to the location in which the above resources are saved locally.
-MODEL_RESOURCES_PATH = '[PATH TO DOWNLOADED MODEL RESOURCES]' # TODO
-NL_EMBEDDING_PATH = os.path.join(MODEL_RESOURCES_PATH, 'nl_embeddings.json')
-CODE_EMBEDDING_PATH = os.path.join(MODEL_RESOURCES_PATH, 'code_embeddings.json')
-FULL_GENERATION_MODEL_PATH = os.path.join(MODEL_RESOURCES_PATH, 'generation-model.pkl.gz')
+MODEL_RESOURCES_PATH = "[PATH TO DOWNLOADED MODEL RESOURCES]"  # TODO
+NL_EMBEDDING_PATH = os.path.join(MODEL_RESOURCES_PATH, "nl_embeddings.json")
+CODE_EMBEDDING_PATH = os.path.join(MODEL_RESOURCES_PATH, "code_embeddings.json")
+FULL_GENERATION_MODEL_PATH = os.path.join(
+    MODEL_RESOURCES_PATH, "generation-model.pkl.gz"
+)
 
 # Should point to where the output is to be saved
-PREDICTION_DIR = '[ROOT DIR TO STORE PREDICTED OUTPUT FOR UPDATE AND DUAL MODELS]' # TODO
-DETECTION_DIR = '[ROOT DIR TO STORE PREDICTED OUTPUT FOR DETECTION MODELS]' # TODO
+PREDICTION_DIR = "out/predict"  # TODO
+DETECTION_DIR = "out/detect"  # TODO
+MODEL_OUTPUT_PATH = "out/deep_jit_posthoc.csv"

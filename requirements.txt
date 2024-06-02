@@ -1,0 +1,8 @@
+torch
+numpy
+dpu_utils
+nltk
+scikit-learn
+torch_scatter
+javalang
+git+https://github.com/salaniz/pycocoevalcap.git
